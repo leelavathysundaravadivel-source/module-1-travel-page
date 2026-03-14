@@ -1,0 +1,131 @@
+/* Custom CSS for TravelQuest */
+
+:root {
+    --primary-blue: #1a5276;
+    --accent-yellow: #f1c40f;
+    --transition: all 0.3s ease-in-out;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    color: #2c3e50;
+    padding-top: 70px; /* Offset for fixed header */
+}
+
+/* Navbar Branding */
+.navbar-brand span {
+    color: var(--accent-yellow);
+}
+
+/* Hero Section - Eye Catching Banner */
+/* Hero Section - Eye Catching Banner */
+.hero-section {
+    min-height: 85vh;
+    /* This line looks for hero-bg.jpg inside your images folder */
+    background: linear-gradient(rgba(26, 82, 118, 0.6), rgba(26, 82, 118, 0.6)), 
+                url('../images/hero-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+/* Ensure the image folder path is correct relative to the CSS file */
+
+/* Responsive Image Rule */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Relative Font Units */
+h1 { font-size: 3.5rem; } /* Will be adjusted by media queries */
+p { font-size: 1.1rem; }
+
+/* Destination Card Styling */
+.destination-card {
+    transition: var(--transition);
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+/* --- MEDIA QUERIES (Breakpoints per Assignment) --- */
+
+/* Mobile (≤768px) */
+@media screen and (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    .hero-section { min-height: 60vh; }
+    .navbar-nav {
+        text-align: center;
+        padding: 20px 0;
+    }
+}
+
+/* Tablet (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    h1 { font-size: 3rem; }
+    .container { max-width: 95%; }
+}
+
+/* Desktop (>1024px) handled by default Bootstrap container */
+
+
+/* --- 3D FLIP CARD ANIMATION --- */
+
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 450px; /* Adjust based on your content */
+    perspective: 1000px; /* Required for 3D effect */
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+/* The "active" class is toggled via JavaScript on click */
+.flip-card.active .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.flip-card-front img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    border: 2px solid white;
+}
+
+.flip-card-back ul {
+    line-height: 2;
+}
+
+/* Hover effect to hint clickability */
+.flip-card:hover .flip-card-front {
+    box-shadow: 0 15px 35px rgba(26, 82, 118, 0.2) !important;
+}
